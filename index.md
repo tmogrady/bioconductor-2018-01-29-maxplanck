@@ -3,7 +3,7 @@ layout: lesson
 root: .
 permalink: index.html  # Is the only page that don't follow the partner /:path/index.html
 ---
-Bioconductor (https://www.bioconductor.org) is a great source of R-based tools to analyze RNA-Seq and other high-throughput data. We'll discuss some of the tools available and how to find more.
+Bioconductor [https://www.bioconductor.org](https://www.bioconductor.org/) is a great source of R-based tools to analyze RNA-Seq and other high-throughput data. We'll discuss some of the tools available and how to find more.
 
 > ## Prerequisites
 >
