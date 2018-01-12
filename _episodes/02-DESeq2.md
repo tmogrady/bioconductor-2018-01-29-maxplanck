@@ -11,7 +11,11 @@ objectives:
 - "Use DESeq2 to identify differentially expressed genes in sample RNA-Seq
 data."
 keypoints:
-- "First key point."
+- "DESeq2 is one example of a well-documented Bioconductor package."
+- "DESeq2 works as one step in a data analysis pipeline, detecting
+differentially expressed genes from gene counts."
+- "In addition to performing statistical calculations, DESeq2 has functions for
+visualization and export of results."
 ---
 
 ### What is DESeq2?
