@@ -33,7 +33,7 @@ RStudio:
 ~~~
 biocLite("DESeq2")
 ~~~
-{: .r}
+{: .source}
 
 For this lesson, we will be following a
  modified version of the DESeq2 vignette. The original vignette and reference
@@ -74,7 +74,7 @@ genes that have at least 10 reads total:
 keep <- rowSums(counts(dds)) >= 10
 dds <- dds[keep,]
 ~~~
-{: .r}
+{: .source}
 
 ### Set your control
 
@@ -84,7 +84,7 @@ sample:
 ~~~
 dds$condition <- relevel(dds$condition, ref = "untreated")
 ~~~
-{: .r}
+{: .source}
 
 ### Differential Expression analysis
 
@@ -96,14 +96,14 @@ dds <- DESeq(dds)
 res <- results(dds)
 res
 ~~~
-{: .r}
+{: .source}
 
 Let's get a summary of our results:
 
 ~~~
 summary(res)
 ~~~
-{: .r}
+{: .source}
 
 ### Exploring and Exporting results
 
@@ -112,7 +112,7 @@ DESeq2 also has some built-in plotting functions. For example:
 ~~~
 plotMA(res, ylim=c(-2,2))
 ~~~
-{: .r}
+{: .source}
 
 ### Exporting results to CSV format
 
@@ -124,4 +124,4 @@ resOrdered <- res[order(res$pvalue),]
 write.csv(as.data.frame(resOrdered),
           file="condition_treated_results.csv")
 ~~~
-{: .r}
+{: .source}

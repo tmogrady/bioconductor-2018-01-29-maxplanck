@@ -79,10 +79,10 @@ called biocLite, that is different from installing other R packages. To get
 started, first you need to get biocLite. To do so, run this command in RStudio:
 
 ~~~
-source("https://bioconductor.org/biocLite.R")
+source("https://bioconductor.org/biocLite.source")
 biocLite()
 ~~~
-{: .r}
+{: .source}
 
 Now you can use BiocLite to install Bioconductor packages. BiocLite helps to
 manage updates and make sure that Bioconductor packages can work together
