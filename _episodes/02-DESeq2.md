@@ -54,9 +54,65 @@ on the
 
 ### Input
 
-To detect differentially expressed genes, you must first have a list of gene
-counts.
-...
+To detect differentially expressed genes, you must first have a list of read
+counts per gene (or transcript). In an RNA-Seq experiment you might get a list
+of counts from a program like [Salmon](https://combine-lab.github.io/salmon/) or [htseq-count](https://htseq.readthedocs.io/en/release_0.9.1/). In this example,
+we'll start with a list of read counts that is included in [pasilla](http://bioconductor.org/packages/release/data/experiment/html/pasilla.html),
+ a Bioconductor experiment package.
+
+Start by installing and loading the pasilla package:
+
+~~~
+biocLite("pasilla")
+library("pasilla")
+~~~
+{: .source}
+
+We're interested in two files: the counts of RNA-Seq reads per gene and the
+description of the samples.
+~~~
+pasCts <- system.file("extdata",
+                      "pasilla_gene_counts.tsv",
+                      package="pasilla", mustWork=TRUE)
+pasAnno <- system.file("extdata",
+                       "pasilla_sample_annotation.csv",
+                       package="pasilla", mustWork=TRUE)
+~~~
+{: .source}
+
+Now we'll read in these files:
+
+~~~
+cts <- as.matrix(read.csv(pasCts,sep="\t",row.names="gene_id"))
+coldata <- read.csv(pasAnno, row.names=1)
+~~~
+{: .source}
+
+Take a look at cts and coldata by clicking on them in the RStudio environment
+panel. We will only need two columns of coldata, so run the following command:
+
+~~~
+coldata <- coldata[,c("condition","type")]
+~~~
+{: .source}
+
+Also, we need to make sure that the sample names are consistent between cts and
+coldata, and in the same order. First, get rid of the "fb" on the row names of
+coldata:
+
+~~~
+rownames(coldata) <- sub("fb", "", rownames(coldata))
+~~~
+{: .source}
+
+Now, put the columns of the cts matrix in the same order as in coldata:
+
+~~~
+cts <- cts[, rownames(coldata)]
+~~~
+{: .source}
+
+Now, the data is ready to be analyzed with DESeq2.
 
 ### The DESeqDataSet
 
