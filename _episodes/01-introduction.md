@@ -27,7 +27,8 @@ and there is an active community of users and developers.
 
 There are three types of Bioconductor packages:
 - Software: packages of code that can be used to analyze data
-- Annotations: packages that contain useful information like genome sequences or transcript coordinates
+- Annotations: packages that contain useful information like genome sequences or
+ transcript coordinates
 - Experiments: packages that contain experimental data, usually used to provide
 examples and test software
 
@@ -79,7 +80,7 @@ called biocLite, that is different from installing other R packages. To get
 started, first you need to get biocLite. To do so, run this command in RStudio:
 
 ~~~
-source("https://bioconductor.org/biocLite.source")
+source("https://bioconductor.org/biocLite.R")
 biocLite()
 ~~~
 {: .source}
