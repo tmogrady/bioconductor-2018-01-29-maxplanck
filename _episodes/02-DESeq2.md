@@ -116,9 +116,24 @@ Now, the data is ready to be analyzed with DESeq2.
 
 ### The DESeqDataSet
 
+First, load the DESeq2 package:
+
+~~~
+library("DESeq2")
+~~~
+{: .source}
+
+
 DESeq2 stores read counts and information from the statistical analysis in a
-*DESeqDataSet* object.
-...
+*DESeqDataSet* object. Run the following command to make a *DESeqDataSet* from
+cts and coldata:
+
+~~~
+dds <- DESeqDataSetFromMatrix(countData = cts,
+                              colData = coldata,
+                              design = ~ condition)
+~~~
+{: .source}
 
 ### Pre-filtering
 
@@ -150,7 +165,6 @@ determine which genes are differentially expressed:
 ~~~
 dds <- DESeq(dds)
 res <- results(dds)
-res
 ~~~
 {: .source}
 
@@ -181,3 +195,7 @@ write.csv(as.data.frame(resOrdered),
           file="condition_treated_results.csv")
 ~~~
 {: .source}
+
+
+Check the DESeq2 vignette for much more information about options for analysis,
+visualization and export.
